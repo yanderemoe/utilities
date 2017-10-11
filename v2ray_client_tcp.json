@@ -1,0 +1,36 @@
+{
+  "inbound" : {
+    "listen" : "127.0.0.1",
+    "port" : 1088,
+    "protocol" : "socks",
+    "settings" : {
+      "ip" : "127.0.0.1",
+      "auth" : "noauth",
+      "udp": true
+    },
+    "allowPassive" : true
+  },
+  "log" : {
+    "loglevel" : "debug"
+  },
+  "outbound" : {
+    "protocol" : "vmess",
+    "streamSettings" : {
+      "network" : "tcp"
+    },
+    "settings" : {
+      "vnext" : [
+        {
+          "address" : "123.123.123.123",
+          "port" : 3389,
+          "users" : [
+            {
+              "id" : "xxxxxxx"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,4 @@
+TransPort 9040
+VirtualAddrNetworkIPv4 10.123.0.0/16
+HidServAuth xxxxxxxx.onion xxxxxxxxxx app_blog
+MapAddress 10.123.0.1 xxxxxxxxx.onion #app_blog

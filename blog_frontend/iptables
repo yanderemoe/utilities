@@ -1,7 +1,56 @@
+*raw
+:PREROUTING ACCEPT [6054:1363204]
+:OUTPUT ACCEPT [6218:1383739]
+COMMIT
+
 *nat
-:PREROUTING ACCEPT [0:0]
-:POSTROUTING ACCEPT [0:0]
-:OUTPUT ACCEPT [0:0]
+:PREROUTING ACCEPT [116:6267]
+:POSTROUTING ACCEPT [196:12152]
+:OUTPUT ACCEPT [193:11972]
 -A PREROUTING -d 10.123.0.0/16 -p tcp -j REDIRECT --to-ports 9040
 -A OUTPUT -d 10.123.0.0/16 -p tcp -j REDIRECT --to-ports 9040
+COMMIT
 
+*mangle
+:PREROUTING ACCEPT [6054:1363204]
+:INPUT ACCEPT [6054:1363204]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [6218:1383739]
+:POSTROUTING ACCEPT [6218:1383739]
+COMMIT
+
+*filter
+:INPUT ACCEPT [681:89752]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [792:91812]
+-A INPUT -s 103.21.244.0/22 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 103.22.200.0/22 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 103.31.4.0/22 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 104.16.0.0/12 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 108.162.192.0/18 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 131.0.72.0/22 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 141.101.64.0/18 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 162.158.0.0/15 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 172.64.0.0/13 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 173.245.48.0/20 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 188.114.96.0/20 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 190.93.240.0/20 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 197.234.240.0/22 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 198.41.128.0/17 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 103.21.244.0/22 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 103.22.200.0/22 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 103.31.4.0/22 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 104.16.0.0/12 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 108.162.192.0/18 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 131.0.72.0/22 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 141.101.64.0/18 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 162.158.0.0/15 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 172.64.0.0/13 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 173.245.48.0/20 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 188.114.96.0/20 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 190.93.240.0/20 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 197.234.240.0/22 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 198.41.128.0/17 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -j REJECT
+-A INPUT -p tcp -m tcp --dport 443 -j REJECT
+COMMIT

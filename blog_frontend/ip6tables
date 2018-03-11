@@ -1,0 +1,29 @@
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -s 2400:cb00::/32 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 2405:8100::/32 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 2405:b500::/32 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 2606:4700::/32 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 2803:f800::/32 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 2c0f:f248::/32 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 2a06:98c0::/29 -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -s 2400:cb00::/32 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 2405:8100::/32 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 2405:b500::/32 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 2606:4700::/32 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 2803:f800::/32 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 2c0f:f248::/32 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -s 2a06:98c0::/29 -p tcp -m tcp --dport 443 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -j REJECT
+-A INPUT -p tcp -m tcp --dport 443 -j REJECT
+COMMIT
+
+*mangle
+:PREROUTING ACCEPT [14611:21745606]
+:INPUT ACCEPT [14611:21745606]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [6527:516152]
+:POSTROUTING ACCEPT [6527:516152]
+COMMIT

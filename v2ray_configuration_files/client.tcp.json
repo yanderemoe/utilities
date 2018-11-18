@@ -1,7 +1,10 @@
 {
-  "inbound" : {
+  "log": {
+    "loglevel" : "none"
+  },
+  "inbounds": [{
     "listen" : "127.0.0.1",
-    "port" : 1080,
+    "port": 1080,
     "protocol" : "socks",
     "settings" : {
       "ip" : "127.0.0.1",
@@ -9,27 +12,26 @@
       "udp": true
     },
     "allowPassive" : true
-  },
-  "log" : {
-    "loglevel" : "none"
-  },
-  "outbound" : {
+  }],
+  "outbounds": [{
     "protocol" : "vmess",
     "streamSettings" : {
       "network" : "tcp"
     },
     "settings" : {
-      "vnext" : [
-        {
-          "address" : "8.8.1.2",
-          "port" : 42122,
-          "users" : [
-            {
-              "id" : "xxxxxxxxxxxxxxxx"
-            }
-          ]
-        }
-      ]
+      "vnext" : [{
+        "address" : "xxxxxxxxxxxxxxxxxxx",
+        "port" : xxxxxxxxxxxxxx,
+        "users" : [{
+          "id" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }]},{
+        "address" : "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "port" : xxxxxxxxxxxxx,
+        "users" : [{
+          "id" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }]
+      }]
     }
-  }
+  }],
+  "transport": {}
 }

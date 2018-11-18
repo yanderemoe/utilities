@@ -4,76 +4,54 @@
     "error": "/dev/null",
     "loglevel": "none"
   },
-  "inbound": {
-    "listen": "8.8.1.2",
-    "port": 1029,
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "1.0.0.1"
+    ]
+  },
+  "inbounds": [{
+    "listen": "xxxxxxxxxxxxxxxxxxx",
+    "port": xxxxxxxxxx,
     "protocol": "vmess",
     "settings": {
-      "clients": [
-        {
-          "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        }
-      ]
+      "clients": [{
+        "id": "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }]
+    },
+    "streamSettings": {
+      "network": "tcp"
+    }
+  },{
+    "listen": "xxxxxxxxxxxxxxxxxxxxx",
+    "port": xxxxxxxxxxxxxx,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [{
+        "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }]
     },
     "streamSettings": {
       "network": "kcp"
     }
-  },
-  "inboundDetour": [
-    {
-      "listen": "8.8.1.2",
-      "port": 1029,
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
-          {
-            "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp"
-      }
-    }
-  ],
-  "outbound": {
+  }],
+  "outbounds": [{
     "protocol": "freedom",
     "settings": {}
-  },
-  "outboundDetour": [
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
-    }
-  ],
+  },{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blackhole"
+  }],
   "routing": {
     "domainStrategy": "IPIfNonMatch",
-    "settings": {
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "0.0.0.0/8",
-            "10.0.0.0/8",
-            "100.64.0.0/10",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "172.16.0.0/12",
-            "192.0.0.0/24",
-            "192.0.2.0/24",
-            "192.168.0.0/16",
-            "198.18.0.0/15",
-            "198.51.100.0/24",
-            "203.0.113.0/24",
-            "::1/128",
-            "fc00::/7",
-            "fe80::/10"
-          ],
-          "outboundTag": "blocked"
-        }
-      ]
-    }
+    "rules": [{
+      "type": "field",
+      "ip": [
+        "geoip:private"
+      ],
+      "outboundTag": "blackhole"
+    }]
   },
   "transport": {
     "tcpSettings": {

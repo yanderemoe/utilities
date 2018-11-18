@@ -31,12 +31,12 @@
     "settings" : {
       "vnext" : [{
         "address" : "xxxxxxxxxxxxxxxx",
-        "port" : 5913,
+        "port" : xxxxxxxxxxx,
         "users" : [{
           "id" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         }]},{
         "address" : "xxxxxxxxxxxxxxx",
-        "port" : xxxxx,
+        "port" : xxxxxxx,
         "users" : [{
           "id" : "xxxxxxxxxxxxxxxxxxxxx"
         }]

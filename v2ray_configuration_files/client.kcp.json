@@ -1,7 +1,10 @@
 {
-  "inbound" : {
+  "log": {
+    "loglevel" : "none"
+  },
+  "inbounds": [{
     "listen" : "127.0.0.1",
-    "port" : 1080,
+    "port": 1080,
     "protocol" : "socks",
     "settings" : {
       "ip" : "127.0.0.1",
@@ -9,37 +12,36 @@
       "udp": true
     },
     "allowPassive" : true
-  },
-  "log" : {
-    "loglevel" : "none"
-  },
-  "outbound" : {
+  }],
+  "outbounds": [{
     "protocol" : "vmess",
     "streamSettings" : {
       "network" : "kcp",
       "kcpSettings" : {
         "congestion" : true,
-        "uplinkCapacity" : 100,
-        "writeBufferSize" : 5,
-        "readBufferSize" : 5,
-        "downlinkCapacity" : 100,
+        "uplinkCapacity" : 1000,
+        "writeBufferSize" : 20,
+        "readBufferSize" : 20,
+        "downlinkCapacity" : 1000,
         "header": {
           "type": "wechat-video"
         }
       }
     },
     "settings" : {
-      "vnext" : [
-        {
-          "address" : "8.8.1.2",
-          "port" : 23123,
-          "users" : [
-            {
-              "id" : "xxxxxxxxxxxxxxxxxxxxx"
-            }
-          ]
-        }
-      ]
+      "vnext" : [{
+        "address" : "xxxxxxxxxxxxxxxx",
+        "port" : 5913,
+        "users" : [{
+          "id" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }]},{
+        "address" : "xxxxxxxxxxxxxxx",
+        "port" : xxxxx,
+        "users" : [{
+          "id" : "xxxxxxxxxxxxxxxxxxxxx"
+        }]
+      }]
     }
-  }
+  }],
+  "transport": {}
 }
